@@ -41,19 +41,19 @@
 
 % ---------- Corps du rapport (15 à 20 pages) ----------
 \pagenumbering{arabic}
-% Numérotation alignée sur l'énoncé et la grille (1 = page de garde) :
-% l'introduction porte le numéro 2, l'analyse éthique le numéro 5, etc.
-% Retirer la ligne suivante pour numéroter à partir de 1.
-\setcounter{section}{1}
 \label{debut-corps}
 
 \section{Introduction et justification du sujet}
 \label{sec:introduction}
-\input{sections/02-introduction}
+\input{sections/01-introduction}
 
 \section{Rappel de la problématique et des objectifs}
 \label{sec:problematique}
-\input{sections/03-problematique-objectifs}
+\input{sections/02-problematique-objectifs}
+
+\section{Revue de littérature}
+\label{sec:revue}
+\input{sections/03-revue-litterature}
 
 \section{Rappel du schéma méthodologique}
 \label{sec:methodologie}
@@ -73,6 +73,12 @@
 
 \section[Livrable spécifique : entente de gouvernance des données simplifiée]{Livrable spécifique :\\ entente de gouvernance des données simplifiée}
 \label{sec:entente}
+% TODO (à décider en équipe, à confirmer avec le professeur) : placer l'entente en annexe C
+% et ne garder ici qu'une discussion qui y renvoie (\cref{ann:entente}).
+% Pour cela : déplacer le \input{sections/08-entente-gouvernance} ci-dessous dans
+% l'environnement appendices, après l'annexe B, sous \section{Entente de gouvernance des données}\label{ann:entente}.
+% Attention : l'énoncé présente l'entente comme la section 8 du rapport (10 pts) et ne
+% mentionne que les annexes A et B ; les annexes ne comptent pas dans les 15 à 20 pages.
 % TODO : court paragraphe de présentation (rapport seulement) : rôle de l'entente, lien avec les sections 5 et 6.
 % Le texte de l'entente est dans sections/08-entente-gouvernance.tex (aussi compilé seul par entente-autonome.tex).
 \arediger{présentation de l'entente}

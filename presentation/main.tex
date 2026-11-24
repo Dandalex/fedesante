@@ -2,14 +2,14 @@
 % INF5163 – Projet de session 2 – Présentation Beamer (12 min + 7-8 min de questions)
 % Compilation : Tectonic (LaTeX Workshop, à l'enregistrement) → presentation/main.pdf
 % En ligne de commande, depuis presentation/ : tectonic -X compile main.tex
-% Environ 12 à 14 diapos de contenu ; chaque membre présente au moins un bloc.
+% Environ 14 diapos de contenu ; chaque membre présente le bloc de sa section.
 % Grille : Beamer – structure et clarté (15) ; discussion critique (15) ;
 %          temps et participation (10).
 % ======================================================================
 \documentclass[aspectratio=169,11pt]{beamer}
 
 % --- Thème sobre ---------------------------------------------------------------
-\usetheme{default}
+\usetheme{SimpleDarkBlue}
 \usecolortheme{default}
 \usefonttheme{professionalfonts}
 \setbeamertemplate{navigation symbols}{}
@@ -33,7 +33,8 @@
 
 \title{Quand le modèle voyage}
 \subtitle{Éthique, propriété et souveraineté dans un consortium d'apprentissage fédéré en santé}
-\author[Équipe FédéSanté]{[Membre 1] \and [Membre 2] \and [Membre 3] \and [Membre 4] \and [Membre 5] \and [Membre 6] \and [Membre 7] \and [Membre 8]}
+% Membres en ordre alphabétique de nom de famille.
+\author[Équipe FédéSanté]{\small Alex D'Andrea, Hamidou Dia, Gaston Raphaël Kapawa\\Ninette Mahoro, Moïse Armand Massack, Charlin Jordan Moukam Djongoue\\Frank Onana Tsanga, Stive Roussel Tankio Djiokap}
 \institute{INF5163 -- Méthodologie de recherche en informatique\\UQO -- Prof.~N'dah Daniel Yapi, Ph.D.}
 \date{Automne 2026}
 
@@ -47,15 +48,17 @@
   \tableofcontents
 \end{frame}
 
-% Ordre : promesse → ce qu'elle ne couvre pas → éthique & ÉDI → PCAP & propriété
-%         → valorisation → entente → conclusion.
-\input{diapos/01-intro}
-\input{diapos/02-attaques}
-\input{diapos/03-ethique-edi}
-\input{diapos/04-pcap-propriete}
-\input{diapos/05-valorisation}
-\input{diapos/06-entente}
-\input{diapos/07-conclusion}
+% Un bloc par section du rapport ; chaque responsable présente sa section
+% (présentateur·trice et durée en tête de chaque fichier de diapos/).
+\input{diapos/01-introduction}
+\input{diapos/02-problematique-objectifs}
+\input{diapos/03-revue-litterature}
+\input{diapos/04-methodologie}
+\input{diapos/05-ethique-edi}
+\input{diapos/06-gestion-pi}
+\input{diapos/07-valorisation-diffusion}
+\input{diapos/08-entente}
+\input{diapos/09-conclusion}
 
 % TODO : retirer ce \nocite quand les sources seront citées dans les diapos.
 \nocite{eptc2,loi25,pcap,mcmahan2017fedavg}

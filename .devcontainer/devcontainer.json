@@ -1,0 +1,14 @@
+// Configuration GitHub Codespaces / Dev Containers.
+// Crée un environnement avec Tectonic (même version que l'intégration continue)
+// et l'extension LaTeX Workshop : la recette de .vscode/settings.json compile
+// alors à chaque enregistrement, avec l'aperçu PDF dans un onglet.
+{
+  "name": "INF5163 – FédéSanté (LaTeX / Tectonic)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "bash .devcontainer/installer-tectonic.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["James-Yu.latex-workshop"]
+    }
+  }
+}

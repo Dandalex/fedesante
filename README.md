@@ -10,6 +10,7 @@ Rapport et présentation INF5163 (UQO, A2026) : analyse critique de l'apprentiss
 ```
 ├── README.md                  # présentation du dépôt
 ├── .vscode/settings.json      # recette LaTeX Workshop : Tectonic, compilation à l'enregistrement
+├── .devcontainer/             # environnement GitHub Codespaces (Tectonic + LaTeX Workshop)
 ├── shared/
 │   ├── references.bib         # bibliographie unique (rapport + présentation), style IEEEtran
 │   ├── macros.tex             # \fedesante{}, \pcap{}, \eptc{}, sigles (\ac{FL}, \ac{DP}…)
@@ -18,10 +19,10 @@ Rapport et présentation INF5163 (UQO, A2026) : analyse critique de l'apprentiss
 │   ├── main.tex               # document principal : \section{…} et \input des fichiers
 │   ├── preambule.tex          # mise en page UQO et paquets communs
 │   ├── entente-autonome.tex   # l'entente (section 8) compilée seule
-│   └── sections/              # page_de_garde, 02-introduction … 09-conclusion, annexe_*
+│   └── sections/              # page_de_garde, 01-introduction … 09-conclusion, annexe_*
 ├── presentation/
 │   ├── main.tex               # Beamer 16:9
-│   └── diapos/                # un fichier par bloc (01-intro … 07-conclusion)
+│   └── diapos/                # un fichier par bloc (01-introduction … 09-conclusion, un par section)
 ├── docs/                      # grille, suivi des sources, répartition
 └── .github/workflows/build.yml
 ```
@@ -48,9 +49,21 @@ Le corps (introduction → conclusion) doit faire 15 à 20 pages.
 Le nombre de pages est aussi écrit dans `rapport/main.log` (ligne `FEDESANTE-PAGES-CORPS`, avec `--keep-logs`).
 
 
+## Compiler dans GitHub Codespaces (sans rien installer)
+
+Pour travailler dans le navigateur : sur la page du dépôt, **Code → Codespaces → Create codespace on <votre branche>**.
+La configuration de `.devcontainer/` installe Tectonic et LaTeX Workshop (environ une minute la première fois).
+Ouvrir ensuite `rapport/main.tex` ou un fichier de section : chaque enregistrement recompile, et l'aperçu PDF s'ouvre dans un onglet (icône « View LaTeX PDF »).
+Arrêter le codespace après usage (**Codespaces → Stop**) pour ménager le quota mensuel gratuit.
+
 ## Récupérer les PDF depuis GitHub Actions
 
-À chaque push et à chaque pull request sur `main`, le workflow *Compilation LaTeX* compile les trois documents avec Tectonic.
+Le workflow *Compilation LaTeX* ne sert pas au travail courant : on compile localement ou dans un codespace.
+Il compile les trois documents avec Tectonic dans deux cas seulement :
+
+- à l'ouverture d'une pull request vers `main` et à chaque nouveau commit poussé dans cette pull request (PDF pour la révision) ;
+- à la fusion dans `main` (PDF de référence).
+
 Pour récupérer les PDF :
 
 1. ouvrir l'onglet **Actions** du dépôt et choisir la dernière exécution ;
@@ -61,7 +74,7 @@ Il affiche un avertissement, sans échouer, si le corps du rapport sort de l'int
 
 ## Flux de travail en équipe
 
-- **Une branche par section** : `section/05-ethique`, `section/08-entente`, `presentation/03-ethique-edi`, etc.
+- **Une branche par section** : `section/05-ethique`, `section/08-entente`, `presentation/05-ethique-edi`, etc.
 - **Une pull request par branche**, avec au moins un réviseur (voir `docs/repartition.md`).
 - **Ne jamais pousser directement sur `main`.** Idéalement, activer une règle de protection de branche sur GitHub.
 - **Une phrase par ligne** dans les fichiers `.tex`, pour des diffs lisibles et des révisions faciles.

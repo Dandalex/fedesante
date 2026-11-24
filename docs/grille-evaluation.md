@@ -4,7 +4,7 @@ Pondération : 40 % de la note finale (écrit 60 pts, oral 40 pts).
 
 | Critère | Points | Section(s) / livrable |
 |---|---|---|
-| Cadrage & problématique | 6 | Rapport, sections 2 et 3 |
+| Cadrage & problématique | 6 | Rapport, sections 1 et 2 |
 | Analyse éthique & ÉDI | 16 | Rapport, section 5 |
 | PI, gestion des données & responsabilité | 14 | Rapport, section 6 |
 | Valorisation & diffusion | 8 | Rapport, section 7 |
@@ -66,7 +66,7 @@ Cocher chaque case seulement après une relecture croisée (personne différente
 - [ ] **Vérifié avant remise**
 
 ### Beamer : structure et clarté (15 pts)
-- [ ] La présentation suit la structure promesse → attaques → éthique & ÉDI → PCAP & propriété → valorisation → entente → conclusion.
+- [ ] La présentation suit les sections du rapport : introduction → problématique → revue de littérature → méthodologie → éthique & ÉDI → gestion & PI → valorisation → entente → conclusion.
 - [ ] Elle compte 12 à 14 diapos de contenu, lisibles (peu de texte, taille de police suffisante).
 - [ ] Elle inclut une diapo de références et une diapo « Questions ».
 - [ ] **Vérifié avant remise**
@@ -77,6 +77,6 @@ Cocher chaque case seulement après une relecture croisée (personne différente
 - [ ] **Vérifié avant remise**
 
 ### Présentation : temps et participation (10 pts)
-- [ ] Chaque membre présente au moins un bloc (voir les commentaires des fichiers `presentation/diapos/`).
+- [ ] Chaque membre présente le bloc de sa section (voir `docs/repartition.md` et les commentaires des fichiers `presentation/diapos/`).
 - [ ] La durée de 12 minutes est respectée lors d'au moins une répétition chronométrée.
 - [ ] **Vérifié avant remise**

@@ -1,9 +1,11 @@
 name: Compilation LaTeX
 
+# Uniquement pour les pull requests vers main et la fusion dans main.
+# Le travail courant sur les branches se compile localement ou dans un codespace.
 on:
-  push:
-    branches: [main]
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 
 jobs:
