@@ -1,0 +1,71 @@
+% ======================================================================
+% Bibliographie partagée (biblatex + biber, style IEEE).
+%
+% Règles de l'équipe :
+%  - Exigence : au moins 15 sources, dont au moins 5 articles scientifiques
+%    évalués par les pairs.
+%  - Toute nouvelle entrée est aussi ajoutée dans docs/sources-a-verifier.md.
+%  - Ne jamais inventer une référence, une page, un DOI ou un numéro
+%    d'article de loi : copier depuis la source officielle.
+%  - Pour les lois et politiques, renseigner urldate = date de consultation.
+%
+% Les quatre entrées ci-dessous sont des EXEMPLES DE FORMAT. Les champs
+% marqués « À VÉRIFIER » doivent être confirmés à la source officielle.
+% ======================================================================
+
+% --- Politique : EPTC 2 ------------------------------------------------
+% À VÉRIFIER : version en vigueur à la date de remise (l'édition 2022 est
+% la dernière connue au moment de la création du dépôt), URL officielle
+% (site du Groupe consultatif interagences en éthique de la recherche),
+% date de consultation. Le chapitre 9 porte sur la recherche impliquant
+% les Premières Nations, les Inuit et les Métis du Canada.
+@manual{eptc2,
+  author       = {{Conseil de recherches en sciences humaines du Canada} and
+                  {Conseil de recherches en sciences naturelles et en génie du Canada} and
+                  {Instituts de recherche en santé du Canada}},
+  title        = {Énoncé de politique des trois conseils : Éthique de la recherche avec des êtres humains -- EPTC~2},
+  year         = {2022},
+  organization = {Gouvernement du Canada},
+  note         = {À VÉRIFIER : version en vigueur, URL et date de consultation},
+}
+
+% --- Loi : Loi 25 (Québec) ---------------------------------------------
+% À VÉRIFIER : intitulé exact, URL LégisQuébec, et pour chaque obligation
+% citée dans le rapport, la loi modifiée et le numéro d'article exact.
+% La Loi 25 modifie surtout la Loi sur l'accès aux documents des
+% organismes publics et sur la protection des renseignements personnels
+% et la Loi sur la protection des renseignements personnels dans le
+% secteur privé : citer de préférence ces lois telles que modifiées.
+@misc{loi25,
+  title        = {Loi modernisant des dispositions législatives en matière de protection des renseignements personnels},
+  year         = {2021},
+  note         = {L.Q. 2021, c.~25. À VÉRIFIER : URL officielle et date de consultation},
+  langid       = {french},
+}
+
+% --- Principes PCAP (CGIPN) ------------------------------------------------
+% À VÉRIFIER : titre exact de la publication retenue, année, URL et date
+% de consultation (site du Centre de gouvernance de l'information des
+% Premières Nations). PCAP est une marque déposée du CGIPN.
+@online{pcap,
+  author       = {{Centre de gouvernance de l'information des Premières Nations}},
+  title        = {Les principes de PCAP\textsuperscript{\textregistered} des Premières Nations},
+  url          = {https://fnigc.ca/fr/},
+  note         = {À VÉRIFIER : titre, année et page exacte},
+}
+
+% --- Article évalué par les pairs : FedAvg ----------------------------------
+% Article fondateur de l'algorithme FedAvg (AISTATS 2017).
+% À VÉRIFIER : pages et URL dans les actes PMLR avant la remise.
+@inproceedings{mcmahan2017fedavg,
+  author       = {McMahan, H. Brendan and Moore, Eider and Ramage, Daniel and
+                  Hampson, Seth and Agüera y Arcas, Blaise},
+  title        = {Communication-Efficient Learning of Deep Networks from Decentralized Data},
+  booktitle    = {Proceedings of the 20th International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  series       = {Proceedings of Machine Learning Research},
+  volume       = {54},
+  pages        = {1273--1282},
+  year         = {2017},
+  url          = {https://proceedings.mlr.press/v54/mcmahan17a.html},
+  langid       = {english},
+}

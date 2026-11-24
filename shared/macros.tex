@@ -1,0 +1,32 @@
+% ======================================================================
+% Macros partagées par le rapport, l'entente autonome et la présentation.
+% Ce fichier est chargé (\input) dans les préambules : ne rien y composer.
+% ======================================================================
+
+% --- Noms propres et cadres ------------------------------------------------
+% Utilisation : \fedesante{}, \pcap{}, \eptc{} (les accolades évitent
+% que l'espace suivante soit avalée).
+\newcommand{\fedesante}{FédéSanté}
+% PCAP est une marque déposée du Centre de gouvernance de l'information des
+% Premières Nations (CGIPN) ; le symbole ® est demandé par le CGIPN.
+% TODO : vérifier la forme d'usage recommandée par le CGIPN.
+\newcommand{\pcap}{PCAP\textsuperscript{\textregistered}}
+% TODO : vérifier la version de l'EPTC 2 en vigueur à la date de remise
+% et ajuster l'entrée correspondante dans shared/references.bib.
+\newcommand{\eptc}{EPTC~2}
+\newcommand{\loivingtcinq}{Loi~25}
+
+% --- Espace réservé visible ----------------------------------------------
+% Marque dans le PDF ce qui reste à rédiger. Aucun \arediger ne doit
+% subsister dans la version remise (vérifier avec : grep -rn arediger).
+\newcommand{\arediger}[1]{{\color{gray}\itshape[À rédiger : #1]}}
+
+% --- Sigles et acronymes (paquet acronym) ----------------------------------
+% \ac{FL} : forme longue + sigle au premier emploi, sigle ensuite.
+% \acs{FL} : sigle seul ; \acl{FL} : forme longue seule.
+\usepackage{acronym}
+\acrodef{FL}[FL]{apprentissage fédéré (\emph{federated learning})}
+\acrodef{DP}[DP]{confidentialité différentielle (\emph{differential privacy})}
+\acrodef{FedAvg}[FedAvg]{moyenne fédérée (\emph{Federated Averaging})}
+\acrodef{CER}[CER]{comité d'éthique de la recherche}
+\acrodef{PCAP}[PCAP]{propriété, contrôle, accès et possession}

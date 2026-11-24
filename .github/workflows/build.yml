@@ -1,0 +1,61 @@
+name: Compilation LaTeX
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  compilation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      # latexmk est lancé depuis la racine : il lit ./latexmkrc (pdflatex, biber, sortie dans build/).
+      - name: Compiler le rapport
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: rapport/main.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=rapport
+
+      - name: Compiler l'entente autonome
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: rapport/entente-autonome.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=entente
+
+      - name: Compiler la présentation
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: presentation/main.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=presentation
+
+      # Avertissement (sans échec) si le corps du rapport sort de 15 à 20 pages.
+      - name: Vérifier la longueur du corps du rapport
+        run: make pages
+
+      - name: Publier rapport.pdf
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport.pdf
+          path: build/rapport.pdf
+          if-no-files-found: warn
+
+      - name: Publier entente.pdf
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: entente.pdf
+          path: build/entente.pdf
+          if-no-files-found: warn
+
+      - name: Publier presentation.pdf
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presentation.pdf
+          path: build/presentation.pdf
+          if-no-files-found: warn

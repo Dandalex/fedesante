@@ -1,0 +1,60 @@
+% ======================================================================
+% INF5163 – Projet de session 2 – Rapport principal
+% Compilation : « make rapport » depuis la racine → build/rapport.pdf
+% Convention : une phrase par ligne dans tous les fichiers .tex.
+% ======================================================================
+\documentclass[11pt]{article}
+\input{rapport/preambule.tex}
+
+% --- Contrôle de la longueur du corps (15 à 20 pages) -----------------------------
+% Le corps va de \label{debut-corps} (début de l'introduction) à
+% \label{fin-corps} (fin de la conclusion), hors références et annexes.
+% Le nombre de pages est écrit dans le log ; « make pages » l'affiche.
+\AtEndDocument{%
+  \IfRefUndefinedExpandable{fin-corps}{%
+    \typeout{FEDESANTE-PAGES-CORPS: inconnu (recompiler)}%
+  }{%
+    \typeout{FEDESANTE-PAGES-CORPS: \number\numexpr\getpagerefnumber{fin-corps}-\getpagerefnumber{debut-corps}+1\relax}%
+  }%
+}
+
+\begin{document}
+
+% --- Pages liminaires -------------------------------------------------------------------
+\pagenumbering{roman}
+\input{rapport/page-titre.tex}
+\tableofcontents
+\clearpage
+
+% --- Corps du rapport (15 à 20 pages) --------------------------------------------------
+\pagenumbering{arabic}
+% Numérotation alignée sur l'énoncé et la grille (1 = page titre) : l'introduction
+% porte le numéro 2, l'analyse éthique le numéro 5, etc. Retirer la ligne
+% suivante pour numéroter à partir de 1.
+\setcounter{section}{1}
+\label{debut-corps}
+\input{rapport/sections/02-introduction.tex}
+\input{rapport/sections/03-problematique-objectifs.tex}
+\input{rapport/sections/04-schema-methodologique.tex}
+\input{rapport/sections/05-integrite-ethique-edi.tex}
+\input{rapport/sections/06-gestion-responsabilite-pi.tex}
+\input{rapport/sections/07-valorisation-diffusion.tex}
+\input{rapport/sections/08-entente-gouvernance.tex}
+\input{rapport/sections/09-conclusion.tex} % contient \label{fin-corps}
+
+% --- Références (hors limite de pages) -----------------------------------------------------
+\clearpage
+% TODO : retirer ce \nocite quand les sources d'exemple seront citées
+% dans le texte avec \cite{...} (sinon elles n'apparaissent pas).
+\nocite{eptc2,loi25,pcap,mcmahan2017fedavg}
+\printbibliography[heading=bibintoc,title={Références}]
+
+% --- Annexes (obligatoires, hors limite de pages) ---------------------------------------
+\clearpage
+\begin{appendices}
+\input{rapport/annexes/a-contributions.tex}
+\clearpage
+\input{rapport/annexes/b-integrite-ia.tex}
+\end{appendices}
+
+\end{document}

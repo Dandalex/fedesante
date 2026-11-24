@@ -1,0 +1,77 @@
+% ======================================================================
+% INF5163 – Projet de session 2 – Présentation Beamer (12 min + 7-8 min de questions)
+% Compilation : « make presentation » depuis la racine → build/presentation.pdf
+% Environ 12 à 14 diapos de contenu ; chaque membre présente au moins un bloc.
+% Grille : Beamer – structure et clarté (15) ; discussion critique (15) ;
+%          temps et participation (10).
+% ======================================================================
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- Thème sobre ---------------------------------------------------------------
+\usetheme{default}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+  \hfill\usebeamerfont{footline}\usebeamercolor[fg]{footline}%
+  \insertshortauthor\quad\insertframenumber{} / \inserttotalframenumber\hspace{1.5em}\vspace{0.8em}}
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% --- Langue et encodage ---------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[autostyle=true]{csquotes}
+\usepackage{booktabs}
+\graphicspath{{shared/figures/}}
+
+% --- Bibliographie et macros partagées avec le rapport -------------------------------
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{shared/references.bib}
+\input{shared/macros.tex}
+
+\title{Quand le modèle voyage}
+\subtitle{Éthique, propriété et souveraineté dans un consortium d'apprentissage fédéré en santé}
+\author[Équipe FédéSanté]{[Membre 1] \and [Membre 2] \and [Membre 3] \and [Membre 4] \and [Membre 5] \and [Membre 6] \and [Membre 7] \and [Membre 8]}
+\institute{INF5163 -- Méthodologie de recherche en informatique\\UQO -- Prof.~N'dah Daniel Yapi, Ph.D.}
+\date{Automne 2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Plan}
+  \tableofcontents
+\end{frame}
+
+% Ordre : promesse → ce qu'elle ne couvre pas → éthique & ÉDI → PCAP & propriété
+%         → valorisation → entente → conclusion.
+\input{presentation/diapos/01-intro.tex}
+\input{presentation/diapos/02-attaques.tex}
+\input{presentation/diapos/03-ethique-edi.tex}
+\input{presentation/diapos/04-pcap-propriete.tex}
+\input{presentation/diapos/05-valorisation.tex}
+\input{presentation/diapos/06-entente.tex}
+\input{presentation/diapos/07-conclusion.tex}
+
+% TODO : retirer ce \nocite quand les sources seront citées dans les diapos.
+\nocite{eptc2,loi25,pcap,mcmahan2017fedavg}
+\begin{frame}[allowframebreaks]{Références}
+  \footnotesize
+  \printbibliography[heading=none]
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  \vfill
+  {\Huge Questions ?\par}
+  \vspace{1em}
+  {\large Merci de votre attention\par}
+  \vfill
+\end{frame}
+
+\end{document}

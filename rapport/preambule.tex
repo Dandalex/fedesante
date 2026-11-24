@@ -1,0 +1,59 @@
+% ======================================================================
+% Préambule du rapport (partagé avec rapport/entente-autonome.tex).
+% Caractères grecs : en mode mathématique ($\varepsilon$, $\delta$) avec pdflatex.
+% Chemins relatifs à la RACINE du dépôt : compiler avec « make » ou
+% latexmk lancé depuis la racine (Overleaf compile aussi depuis la racine).
+% ======================================================================
+
+% --- Langue et encodage (pdflatex) ---------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[autostyle=true]{csquotes}   % \enquote{…} → « … »
+
+% --- Mise en page ----------------------------------------------------------------
+\usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing % TODO (équipe) : confirmer l'interligne attendu (simple / 1,5).
+
+% --- Tableaux, figures, couleurs --------------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\graphicspath{{shared/figures/}}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{amsmath}               % paramètres de DP : ε, δ, etc.
+\usepackage[titletoc,title]{appendix} % « Annexe A », « Annexe B »
+\usepackage{refcount}              % contrôle de la longueur (rapport/main.tex)
+
+% --- Bibliographie ----------------------------------------------------------------
+% Style IEEE (paquet biblatex-ieee). Pour passer en APA : style=apa.
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{shared/references.bib}
+
+% --- Macros partagées -------------------------------------------------------------
+\input{shared/macros.tex}
+
+% --- Liens et renvois (hyperref, puis cleveref, en dernier) -----------------------------
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\hypersetup{
+  pdftitle={Quand le modèle voyage : éthique, propriété et souveraineté dans un consortium d'apprentissage fédéré en santé},
+  pdfsubject={INF5163 -- Projet de session 2},
+}
+\usepackage[french,nameinlink]{cleveref}
+
+% --- Articles numérotés de l'entente (section 8) --------------------------------
+% \articleentente{Titre} produit « Article N – Titre » et l'ajoute à la table
+% des matières. \label{art:...} juste après permet \ref{art:...}.
+\newcounter{articleentente}
+\newcommand{\articleentente}[1]{%
+  \refstepcounter{articleentente}%
+  \subsection*{Article~\thearticleentente{} -- #1}%
+  \addcontentsline{toc}{subsection}{Article~\thearticleentente{} -- #1}}
+
+% Vrai uniquement dans rapport/entente-autonome.tex.
+\newif\ifententeautonome
+\ententeautonomefalse
