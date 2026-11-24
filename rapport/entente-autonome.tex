@@ -1,13 +1,12 @@
 % ======================================================================
 % Entente de gouvernance des données – version autonome (2 à 3 pages).
-% Compilation : « make entente » depuis la racine → build/entente.pdf
+% Compilation : Tectonic, comme main.tex → rapport/entente-autonome.pdf
 % Le texte de l'entente N'EST PAS dupliqué : il vient de
-% rapport/sections/08-entente-gouvernance.tex (\input ci-dessous).
+% sections/08-entente-gouvernance.tex (\input ci-dessous).
 % ======================================================================
-\documentclass[11pt]{article}
-\input{rapport/preambule.tex}
-\ententeautonometrue % masque l'en-tête de section propre au rapport
-\singlespacing        % l'entente autonome est plus compacte que le rapport
+\documentclass[12pt,letterpaper]{article}
+\input{preambule}
+\singlespacing % l'entente autonome est plus compacte que le rapport
 
 \begin{document}
 
@@ -19,9 +18,10 @@
   {\small Version simplifiée -- INF5163, automne 2026\par}
 \end{center}
 
-\input{rapport/sections/08-entente-gouvernance.tex}
+\input{sections/08-entente-gouvernance}
 
 % Si l'entente cite des sources (\cite), décommenter :
-% \printbibliography[title={Références}]
+% \bibliographystyle{IEEEtran}
+% \bibliography{../shared/references}
 
 \end{document}

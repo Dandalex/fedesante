@@ -9,18 +9,16 @@ Rapport et présentation INF5163 (UQO, A2026) : analyse critique de l'apprentiss
 
 ```
 ├── README.md                  # présentation du dépôt
-├── latexmkrc, Makefile        # configuration de compilation (pdflatex + biber, sortie dans build/)
+├── .vscode/settings.json      # recette LaTeX Workshop : Tectonic, compilation à l'enregistrement
 ├── shared/
-│   ├── references.bib         # bibliographie unique (rapport + présentation)
+│   ├── references.bib         # bibliographie unique (rapport + présentation), style IEEEtran
 │   ├── macros.tex             # \fedesante{}, \pcap{}, \eptc{}, sigles (\ac{FL}, \ac{DP}…)
-│   └── figures/               # figures partagées
+│   └── figures/               # figures partagées, dont Logo_UQO.jpg
 ├── rapport/
-│   ├── main.tex               # document principal (15 à 20 pages de corps)
-│   ├── preambule.tex          # paquets et réglages communs
-│   ├── page-titre.tex
-│   ├── sections/              # 02-introduction.tex … 09-conclusion.tex
-│   ├── annexes/               # A : contributions ; B : intégrité et IA
-│   └── entente-autonome.tex   # l'entente (section 8) compilée seule
+│   ├── main.tex               # document principal : \section{…} et \input des fichiers
+│   ├── preambule.tex          # mise en page UQO et paquets communs
+│   ├── entente-autonome.tex   # l'entente (section 8) compilée seule
+│   └── sections/              # page_de_garde, 02-introduction … 09-conclusion, annexe_*
 ├── presentation/
 │   ├── main.tex               # Beamer 16:9
 │   └── diapos/                # un fichier par bloc (01-intro … 07-conclusion)
@@ -30,25 +28,29 @@ Rapport et présentation INF5163 (UQO, A2026) : analyse critique de l'apprentiss
 
 ## Compilation locale
 
-Prérequis : une distribution TeX récente (TeX Live complète recommandée) avec `latexmk`, `biber`, `biblatex` et `biblatex-ieee`.
-Sous Debian/Ubuntu : `sudo apt install texlive-full`, ou au minimum `texlive-latex-extra texlive-lang-french texlive-bibtex-extra biber latexmk`.
+Le projet suit la même recette que nos travaux précédents : **Tectonic**, lancé par l'extension **LaTeX Workshop** de VS Code.
+Tectonic télécharge lui-même les paquets manquants (dont `IEEEtran.bst`) et lance BibTeX automatiquement.
 
-Toujours compiler **depuis la racine du dépôt**, car les chemins `\input` sont relatifs à la racine :
+1. Installer Tectonic (voir <https://tectonic-typesetting.github.io>), par exemple dans `~/.local/bin`.
+2. Ouvrir le dépôt dans VS Code avec LaTeX Workshop : la recette de `.vscode/settings.json` compile à chaque enregistrement.
+   Grâce au commentaire `% !TEX root = ../main.tex`, enregistrer un fichier de section recompile le document principal.
+3. En ligne de commande :
 
 ```sh
-make all            # rapport, entente et présentation
-make rapport        # build/rapport.pdf
-make entente        # build/entente.pdf (section 8 seule)
-make presentation   # build/presentation.pdf
-make pages          # nombre de pages du corps du rapport (cible : 15 à 20)
-make clean          # supprime build/
+cd rapport && tectonic -X compile main.tex               # rapport/main.pdf
+cd rapport && tectonic -X compile entente-autonome.tex   # rapport/entente-autonome.pdf
+cd presentation && tectonic -X compile main.tex          # presentation/main.pdf
 ```
 
-Sur Overleaf, importer le dépôt tel quel et choisir `rapport/main.tex` comme document principal (Overleaf compile depuis la racine).
+**Longueur du rapport.**
+Le corps (introduction → conclusion) doit faire 15 à 20 pages.
+À chaque compilation, un avertissement LaTeX « Corps du rapport : N page(s) » s'affiche s'il sort de cet intervalle.
+Le nombre de pages est aussi écrit dans `rapport/main.log` (ligne `FEDESANTE-PAGES-CORPS`, avec `--keep-logs`).
+
 
 ## Récupérer les PDF depuis GitHub Actions
 
-À chaque push et à chaque pull request sur `main`, le workflow *Compilation LaTeX* compile les trois documents.
+À chaque push et à chaque pull request sur `main`, le workflow *Compilation LaTeX* compile les trois documents avec Tectonic.
 Pour récupérer les PDF :
 
 1. ouvrir l'onglet **Actions** du dépôt et choisir la dernière exécution ;
@@ -69,8 +71,8 @@ Il affiche un avertissement, sans échouer, si le corps du rapport sort de l'int
 ```sh
 git switch main && git pull
 git switch -c section/05-ethique
-# … rédaction, puis :
-make rapport
+# … rédaction ;
+# enregistrer dans VS Code (compilation Tectonic), puis :
 git add rapport/sections/05-integrite-ethique-edi.tex
 git commit -m "Section 5 : risques résiduels"
 git push -u origin section/05-ethique   # puis ouvrir une pull request
@@ -78,7 +80,7 @@ git push -u origin section/05-ethique   # puis ouvrir une pull request
 
 ## IA générative
 
-L'usage d'outils d'IA générative est permis, mais il doit être **déclaré dans l'annexe B** (`rapport/annexes/b-integrite-ia.tex`) : outil, portion du travail et raison.
+L'usage d'outils d'IA générative est permis, mais il doit être **déclaré dans l'annexe B** (`rapport/sections/annexe_integrite_ia.tex`) : outil, portion du travail et raison.
 Consignez chaque usage **au fur et à mesure**, et non à la fin.
 
 ## Licence

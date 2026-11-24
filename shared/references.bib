@@ -1,5 +1,6 @@
 % ======================================================================
-% Bibliographie partagée (biblatex + biber, style IEEE).
+% Bibliographie partagée (BibTeX, style IEEEtran), utilisée par le rapport
+% (\bibliography{../shared/references}) et par la présentation.
 %
 % Règles de l'équipe :
 %  - Exigence : au moins 15 sources, dont au moins 5 articles scientifiques
@@ -7,7 +8,8 @@
 %  - Toute nouvelle entrée est aussi ajoutée dans docs/sources-a-verifier.md.
 %  - Ne jamais inventer une référence, une page, un DOI ou un numéro
 %    d'article de loi : copier depuis la source officielle.
-%  - Pour les lois et politiques, renseigner urldate = date de consultation.
+%  - Pour les lois et politiques, indiquer la date de consultation dans
+%    note (IEEEtran n'affiche pas le champ urldate).
 %
 % Les quatre entrées ci-dessous sont des EXEMPLES DE FORMAT. Les champs
 % marqués « À VÉRIFIER » doivent être confirmés à la source officielle.
@@ -23,7 +25,7 @@
   author       = {{Conseil de recherches en sciences humaines du Canada} and
                   {Conseil de recherches en sciences naturelles et en génie du Canada} and
                   {Instituts de recherche en santé du Canada}},
-  title        = {Énoncé de politique des trois conseils : Éthique de la recherche avec des êtres humains -- EPTC~2},
+  title        = {Énoncé de politique des trois conseils : Éthique de la recherche avec des êtres humains -- {EPTC}~2},
   year         = {2022},
   organization = {Gouvernement du Canada},
   note         = {À VÉRIFIER : version en vigueur, URL et date de consultation},
@@ -39,7 +41,7 @@
 @misc{loi25,
   title        = {Loi modernisant des dispositions législatives en matière de protection des renseignements personnels},
   year         = {2021},
-  note         = {L.Q. 2021, c.~25. À VÉRIFIER : URL officielle et date de consultation},
+  note         = {{L.Q.} 2021, c.~25. À VÉRIFIER : URL officielle et date de consultation},
   langid       = {french},
 }
 
@@ -49,7 +51,7 @@
 % Premières Nations). PCAP est une marque déposée du CGIPN.
 @online{pcap,
   author       = {{Centre de gouvernance de l'information des Premières Nations}},
-  title        = {Les principes de PCAP\textsuperscript{\textregistered} des Premières Nations},
+  title        = {Les principes de {PCAP}\textsuperscript{\textregistered} des {Premières Nations}},
   url          = {https://fnigc.ca/fr/},
   note         = {À VÉRIFIER : titre, année et page exacte},
 }

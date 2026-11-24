@@ -1,0 +1,57 @@
+% !TEX root = ../main.tex
+% Page de garde : titre, cours, enseignant, membres de l'équipe, lien GitHub.
+% TODO : remplacer les espaces réservés ; retirer le membre 8 si l'équipe compte 7 membres.
+\begin{titlepage}
+  \centering
+  \singlespacing
+
+  % Logo (Logo_UQO.jpg dans ../shared/figures/)
+  \IfFileExists{../shared/figures/Logo_UQO.jpg}{%
+    \includegraphics[width=4.5cm]{Logo_UQO.jpg}\par
+    \vspace{1.2cm}
+  }{}
+
+  % Bloc institutionnel
+  {\Large\bfseries Université du Québec en Outaouais\par}
+  \vspace{0.4cm}
+  {\large Département d'informatique et d'ingénierie\par}
+  \vspace{0.2cm}
+  {\large\bfseries INF5163 : Méthodologie de recherche en informatique\par}
+  \vspace{0.2cm}
+  {\large Enseignant : N'dah Daniel Yapi, Ph.D.\par}
+
+  \vfill
+
+  % Type de document et titre
+  {\Large Projet de session 2 (examen final) :\par}
+  \vspace{0.8cm}
+  {\LARGE\bfseries
+   Quand le modèle voyage\par}
+  \vspace{0.3cm}
+  {\Large Éthique, propriété et souveraineté dans un consortium\\
+   d'apprentissage fédéré en santé\par}
+
+  \vfill
+
+  % Membres de l'équipe (Nom, Prénom)
+  {\large\bfseries Membres de l'équipe :\par}
+  \vspace{0.4cm}
+  {\large
+    {[Nom, Prénom 1]}\\[0.15cm]
+    {[Nom, Prénom 2]}\\[0.15cm]
+    {[Nom, Prénom 3]}\\[0.15cm]
+    {[Nom, Prénom 4]}\\[0.15cm]
+    {[Nom, Prénom 5]}\\[0.15cm]
+    {[Nom, Prénom 6]}\\[0.15cm]
+    {[Nom, Prénom 7]}\\[0.15cm]
+    {[Nom, Prénom 8]}\par}
+
+  \vfill
+
+  % Renseignements administratifs
+  {\large Session : Automne 2026\par}
+  \vspace{0.1cm}
+  {\large Date de remise : [date] \par} % TODO : date de remise sur Moodle.
+  \vspace{0.4cm}
+  \textbf{Dépôt GitHub :} \url{https://github.com/Dandalex/fedesante} % TODO : mettre à jour si le dépôt est renommé.
+\end{titlepage}

@@ -1,0 +1,45 @@
+{
+  // Même recette que Projet-inf-INF5103 : Tectonic (~/.local/bin) télécharge lui-même
+  // les paquets manquants, dont IEEEtran.bst, et lance BibTeX automatiquement.
+  // Chaque document se compile depuis son propre dossier (rapport/ ou presentation/) ;
+  // les fichiers inclus portent « % !TEX root = ../main.tex ».
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tectonic",
+      "command": "tectonic",
+      "args": [
+        "-X",
+        "compile",
+        "--synctex",
+        "--keep-logs",
+        "--keep-intermediates",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "tectonic",
+      "tools": ["tectonic"]
+    }
+  ],
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.fdb_latexmk",
+    "*.fls",
+    "*.log",
+    "*.out",
+    "*.synctex.gz",
+    "*.toc",
+    "*.lof",
+    "*.lot",
+    "*.nav",
+    "*.snm",
+    "*.vrb"
+  ]
+}

@@ -1,6 +1,7 @@
 % ======================================================================
 % INF5163 – Projet de session 2 – Présentation Beamer (12 min + 7-8 min de questions)
-% Compilation : « make presentation » depuis la racine → build/presentation.pdf
+% Compilation : Tectonic (LaTeX Workshop, à l'enregistrement) → presentation/main.pdf
+% En ligne de commande, depuis presentation/ : tectonic -X compile main.tex
 % Environ 12 à 14 diapos de contenu ; chaque membre présente au moins un bloc.
 % Grille : Beamer – structure et clarté (15) ; discussion critique (15) ;
 %          temps et participation (10).
@@ -17,7 +18,7 @@
   \insertshortauthor\quad\insertframenumber{} / \inserttotalframenumber\hspace{1.5em}\vspace{0.8em}}
 \setbeamercolor{footline}{fg=gray}
 \setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamertemplate{bibliography item}[text]
 
 % --- Langue et encodage ---------------------------------------------------------
 \usepackage[T1]{fontenc}
@@ -25,12 +26,10 @@
 \usepackage[french]{babel}
 \usepackage[autostyle=true]{csquotes}
 \usepackage{booktabs}
-\graphicspath{{shared/figures/}}
+\graphicspath{{../shared/figures/}}
 
-% --- Bibliographie et macros partagées avec le rapport -------------------------------
-\usepackage[backend=biber,style=ieee]{biblatex}
-\addbibresource{shared/references.bib}
-\input{shared/macros.tex}
+% --- Macros partagées avec le rapport (bibliographie : ../shared/references.bib) ---------
+\input{../shared/macros}
 
 \title{Quand le modèle voyage}
 \subtitle{Éthique, propriété et souveraineté dans un consortium d'apprentissage fédéré en santé}
@@ -50,19 +49,20 @@
 
 % Ordre : promesse → ce qu'elle ne couvre pas → éthique & ÉDI → PCAP & propriété
 %         → valorisation → entente → conclusion.
-\input{presentation/diapos/01-intro.tex}
-\input{presentation/diapos/02-attaques.tex}
-\input{presentation/diapos/03-ethique-edi.tex}
-\input{presentation/diapos/04-pcap-propriete.tex}
-\input{presentation/diapos/05-valorisation.tex}
-\input{presentation/diapos/06-entente.tex}
-\input{presentation/diapos/07-conclusion.tex}
+\input{diapos/01-intro}
+\input{diapos/02-attaques}
+\input{diapos/03-ethique-edi}
+\input{diapos/04-pcap-propriete}
+\input{diapos/05-valorisation}
+\input{diapos/06-entente}
+\input{diapos/07-conclusion}
 
 % TODO : retirer ce \nocite quand les sources seront citées dans les diapos.
 \nocite{eptc2,loi25,pcap,mcmahan2017fedavg}
 \begin{frame}[allowframebreaks]{Références}
   \footnotesize
-  \printbibliography[heading=none]
+  \bibliographystyle{IEEEtran}
+  \bibliography{../shared/references}
 \end{frame}
 
 \begin{frame}[plain]

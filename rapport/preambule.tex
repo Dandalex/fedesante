@@ -1,59 +1,58 @@
+% !TEX root = main.tex
 % ======================================================================
-% Préambule du rapport (partagé avec rapport/entente-autonome.tex).
-% Caractères grecs : en mode mathématique ($\varepsilon$, $\delta$) avec pdflatex.
-% Chemins relatifs à la RACINE du dépôt : compiler avec « make » ou
-% latexmk lancé depuis la racine (Overleaf compile aussi depuis la racine).
+% Préambule du rapport, partagé avec entente-autonome.tex.
+% Compilation : Tectonic (recette LaTeX Workshop dans .vscode/settings.json),
+% lancé depuis le dossier rapport/. Les chemins sont relatifs à rapport/.
 % ======================================================================
 
-% --- Langue et encodage (pdflatex) ---------------------------------------------
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage[french]{babel}
 \usepackage[autostyle=true]{csquotes}   % \enquote{…} → « … »
 
-% --- Mise en page ----------------------------------------------------------------
-\usepackage[letterpaper,margin=2.5cm]{geometry}
-\usepackage{microtype}
+% ---------- Mise en page UQO (travaux de 30 pages et moins) ----------
+% Police : Times New Roman 12 pt ; notes et légendes en 10 pt.
+\usepackage{mathptmx}
+\renewcommand{\ttdefault}{lmtt}           % police à chasse fixe vectorielle
+\usepackage[font=footnotesize]{caption}   % \footnotesize = 10 pt en 12 pt
+% Marges : 2,5 cm de chaque côté.
+\usepackage[margin=2.5cm]{geometry}
+% Interligne 1,5 pour le corps ; simple pour la bibliographie et les notes.
 \usepackage{setspace}
-\onehalfspacing % TODO (équipe) : confirmer l'interligne attendu (simple / 1,5).
+\onehalfspacing
 
-% --- Tableaux, figures, couleurs --------------------------------------------------
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
+% ---------- Paquets ----------
+% Caractères grecs (ε, δ) : en mode mathématique, $\varepsilon$, $\delta$.
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\graphicspath{{shared/figures/}}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage[table]{xcolor}
 \usepackage{enumitem}
-\usepackage{amsmath}               % paramètres de DP : ε, δ, etc.
-\usepackage[titletoc,title]{appendix} % « Annexe A », « Annexe B »
-\usepackage{refcount}              % contrôle de la longueur (rapport/main.tex)
+\usepackage[titletoc,title]{appendix}   % « Annexe A », « Annexe B »
+\usepackage{refcount}                   % contrôle de la longueur (main.tex)
 
-% --- Bibliographie ----------------------------------------------------------------
-% Style IEEE (paquet biblatex-ieee). Pour passer en APA : style=apa.
-\usepackage[backend=biber,style=ieee]{biblatex}
-\addbibresource{shared/references.bib}
+\graphicspath{{figures/}{../shared/figures/}}
 
-% --- Macros partagées -------------------------------------------------------------
-\input{shared/macros.tex}
+% ---------- Macros partagées (rapport et présentation) ----------
+\input{../shared/macros}
 
-% --- Liens et renvois (hyperref, puis cleveref, en dernier) -----------------------------
-\usepackage[hidelinks,pdfusetitle]{hyperref}
+% ---------- Liens et renvois (hyperref, puis cleveref, en dernier) ----------
+\usepackage[hidelinks]{hyperref}
 \hypersetup{
   pdftitle={Quand le modèle voyage : éthique, propriété et souveraineté dans un consortium d'apprentissage fédéré en santé},
   pdfsubject={INF5163 -- Projet de session 2},
 }
 \usepackage[french,nameinlink]{cleveref}
 
-% --- Articles numérotés de l'entente (section 8) --------------------------------
+% ---------- Articles numérotés de l'entente (section 8) ----------
 % \articleentente{Titre} produit « Article N – Titre » et l'ajoute à la table
-% des matières. \label{art:...} juste après permet \ref{art:...}.
+% des matières. Un \label{art-...} juste après permet \ref{art-...}
+% (pas de deux-points dans ces étiquettes : conflit avec babel-french dans entente-autonome).
 \newcounter{articleentente}
 \newcommand{\articleentente}[1]{%
   \refstepcounter{articleentente}%
   \subsection*{Article~\thearticleentente{} -- #1}%
   \addcontentsline{toc}{subsection}{Article~\thearticleentente{} -- #1}}
-
-% Vrai uniquement dans rapport/entente-autonome.tex.
-\newif\ifententeautonome
-\ententeautonomefalse

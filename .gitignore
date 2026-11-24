@@ -1,4 +1,4 @@
-# Artefacts LaTeX
+# Fichiers générés par LaTeX (Tectonic --keep-intermediates / --keep-logs)
 *.aux
 *.log
 *.out
@@ -13,4 +13,10 @@
 *.nav
 *.snm
 *.vrb
+*.lof
+*.lot
 build/
+
+# PDF produits localement (les PDF officiels viennent de GitHub Actions)
+rapport/*.pdf
+presentation/*.pdf

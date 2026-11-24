@@ -13,28 +13,51 @@ jobs:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
 
-      # latexmk est lancé depuis la racine : il lit ./latexmkrc (pdflatex, biber, sortie dans build/).
-      - name: Compiler le rapport
-        uses: xu-cheng/latex-action@v3
+      # Même moteur qu'en local (recette LaTeX Workshop) : Tectonic, version épinglée.
+      - name: Installer Tectonic
+        uses: wtfjoke/setup-tectonic@v4
         with:
-          root_file: rapport/main.tex
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=rapport
+          tectonic-version: 0.16.9
+
+      - name: Cache des paquets Tectonic
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Tectonic
+          key: tectonic-${{ hashFiles('**/*.tex', 'shared/references.bib') }}
+          restore-keys: tectonic-
+
+      # Chaque document se compile depuis son dossier ; un échec fait échouer le workflow.
+      - name: Compiler le rapport
+        working-directory: rapport
+        run: tectonic -X compile --keep-logs main.tex
 
       - name: Compiler l'entente autonome
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: rapport/entente-autonome.tex
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=entente
+        working-directory: rapport
+        run: tectonic -X compile entente-autonome.tex
 
       - name: Compiler la présentation
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: presentation/main.tex
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=presentation
+        working-directory: presentation
+        run: tectonic -X compile main.tex
 
       # Avertissement (sans échec) si le corps du rapport sort de 15 à 20 pages.
       - name: Vérifier la longueur du corps du rapport
-        run: make pages
+        run: |
+          n=$(sed -n 's/^FEDESANTE-PAGES-CORPS: \([0-9][0-9]*\).*/\1/p' rapport/main.log | tail -n 1)
+          if [ -z "$n" ]; then
+            echo "::warning title=Longueur du rapport::Nombre de pages introuvable dans rapport/main.log."
+          elif [ "$n" -lt 15 ] || [ "$n" -gt 20 ]; then
+            echo "::warning title=Longueur du rapport::Le corps du rapport fait $n page(s), hors de l'intervalle 15–20."
+          else
+            echo "Corps du rapport : $n pages (conforme)."
+          fi
+
+      - name: Renommer les PDF
+        if: always()
+        run: |
+          mkdir -p build
+          cp rapport/main.pdf build/rapport.pdf || true
+          cp rapport/entente-autonome.pdf build/entente.pdf || true
+          cp presentation/main.pdf build/presentation.pdf || true
 
       - name: Publier rapport.pdf
         if: always()

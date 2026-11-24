@@ -17,7 +17,7 @@ Membres : remplacer les espaces réservés par les prénoms et noms (7 ou 8 memb
 
 | Section | Fichier | Responsable(s) | Réviseur | Date cible |
 |---|---|---|---|---|
-| Page titre | `rapport/page-titre.tex` | | | |
+| Page de garde | `rapport/sections/page_de_garde.tex` | | | |
 | 2. Introduction et justification | `rapport/sections/02-introduction.tex` | | | |
 | 3. Problématique et objectifs | `rapport/sections/03-problematique-objectifs.tex` | | | |
 | 4. Schéma méthodologique | `rapport/sections/04-schema-methodologique.tex` | | | |
@@ -26,8 +26,8 @@ Membres : remplacer les espaces réservés par les prénoms et noms (7 ou 8 memb
 | 7. Valorisation et diffusion (8 pts) | `rapport/sections/07-valorisation-diffusion.tex` | | | |
 | 8. Entente de gouvernance (10 pts) | `rapport/sections/08-entente-gouvernance.tex` | | | |
 | 9. Conclusion | `rapport/sections/09-conclusion.tex` | | | |
-| Annexe A – Contributions | `rapport/annexes/a-contributions.tex` | | | |
-| Annexe B – Intégrité et IA | `rapport/annexes/b-integrite-ia.tex` | | | |
+| Annexe A – Contributions | `rapport/sections/annexe_contributions.tex` | | | |
+| Annexe B – Intégrité et IA | `rapport/sections/annexe_integrite_ia.tex` | | | |
 | Bibliographie et suivi des sources | `shared/references.bib`, `docs/sources-a-verifier.md` | | | |
 | Relecture finale (français, normes) | tout le rapport | | | |
 

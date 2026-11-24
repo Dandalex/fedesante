@@ -1,60 +1,112 @@
 % ======================================================================
 % INF5163 – Projet de session 2 – Rapport principal
-% Compilation : « make rapport » depuis la racine → build/rapport.pdf
+% Compilation : Tectonic (LaTeX Workshop, à l'enregistrement) → rapport/main.pdf
+% En ligne de commande, depuis rapport/ : tectonic -X compile --keep-logs main.tex
+% Bibliographie : BibTeX, style IEEEtran, fichier ../shared/references.bib
 % Convention : une phrase par ligne dans tous les fichiers .tex.
 % ======================================================================
-\documentclass[11pt]{article}
-\input{rapport/preambule.tex}
+\documentclass[12pt,letterpaper]{article}
+\input{preambule}
 
-% --- Contrôle de la longueur du corps (15 à 20 pages) -----------------------------
-% Le corps va de \label{debut-corps} (début de l'introduction) à
-% \label{fin-corps} (fin de la conclusion), hors références et annexes.
-% Le nombre de pages est écrit dans le log ; « make pages » l'affiche.
+% Limite : 15 à 20 pages, hors page de garde, table des matières, références et annexes.
+% Le corps va de \label{debut-corps} (début de l'introduction) à \label{fin-corps}
+% (fin de la conclusion). À chaque compilation, le nombre de pages est écrit
+% dans main.log (ligne FEDESANTE-PAGES-CORPS) et un avertissement LaTeX
+% s'affiche s'il sort de l'intervalle 15–20 (onglet Problems de VS Code).
+\makeatletter
 \AtEndDocument{%
   \IfRefUndefinedExpandable{fin-corps}{%
     \typeout{FEDESANTE-PAGES-CORPS: inconnu (recompiler)}%
   }{%
-    \typeout{FEDESANTE-PAGES-CORPS: \number\numexpr\getpagerefnumber{fin-corps}-\getpagerefnumber{debut-corps}+1\relax}%
+    \edef\fedesante@pages{\number\numexpr\getpagerefnumber{fin-corps}-\getpagerefnumber{debut-corps}+1\relax}%
+    \typeout{FEDESANTE-PAGES-CORPS: \fedesante@pages}%
+    \ifnum\fedesante@pages<15 \@latex@warning@no@line{Corps du rapport : \fedesante@pages\space page(s), cible 15 a 20}\fi
+    \ifnum\fedesante@pages>20 \@latex@warning@no@line{Corps du rapport : \fedesante@pages\space page(s), cible 15 a 20}\fi
   }%
 }
+\makeatother
 
 \begin{document}
 
-% --- Pages liminaires -------------------------------------------------------------------
+% pageanchor=false : évite l'avertissement hyperref « @page.1 already defined ».
+\hypersetup{pageanchor=false}
+\input{sections/page_de_garde}
+\hypersetup{pageanchor=true}
+
 \pagenumbering{roman}
-\input{rapport/page-titre.tex}
+\begin{singlespace}
 \tableofcontents
+\end{singlespace}
 \clearpage
 
-% --- Corps du rapport (15 à 20 pages) --------------------------------------------------
+% ---------- Corps du rapport (15 à 20 pages) ----------
 \pagenumbering{arabic}
-% Numérotation alignée sur l'énoncé et la grille (1 = page titre) : l'introduction
-% porte le numéro 2, l'analyse éthique le numéro 5, etc. Retirer la ligne
-% suivante pour numéroter à partir de 1.
+% Numérotation alignée sur l'énoncé et la grille (1 = page de garde) :
+% l'introduction porte le numéro 2, l'analyse éthique le numéro 5, etc.
+% Retirer la ligne suivante pour numéroter à partir de 1.
 \setcounter{section}{1}
 \label{debut-corps}
-\input{rapport/sections/02-introduction.tex}
-\input{rapport/sections/03-problematique-objectifs.tex}
-\input{rapport/sections/04-schema-methodologique.tex}
-\input{rapport/sections/05-integrite-ethique-edi.tex}
-\input{rapport/sections/06-gestion-responsabilite-pi.tex}
-\input{rapport/sections/07-valorisation-diffusion.tex}
-\input{rapport/sections/08-entente-gouvernance.tex}
-\input{rapport/sections/09-conclusion.tex} % contient \label{fin-corps}
 
-% --- Références (hors limite de pages) -----------------------------------------------------
+\section{Introduction et justification du sujet}
+\label{sec:introduction}
+\input{sections/02-introduction}
+
+\section{Rappel de la problématique et des objectifs}
+\label{sec:problematique}
+\input{sections/03-problematique-objectifs}
+
+\section{Rappel du schéma méthodologique}
+\label{sec:methodologie}
+\input{sections/04-schema-methodologique}
+
+\section{Analyse d'intégrité, éthique et ÉDI}
+\label{sec:ethique}
+\input{sections/05-integrite-ethique-edi}
+
+\section{Gestion, responsabilité et propriété intellectuelle}
+\label{sec:gestion-pi}
+\input{sections/06-gestion-responsabilite-pi}
+
+\section{Valorisation et diffusion}
+\label{sec:valorisation}
+\input{sections/07-valorisation-diffusion}
+
+\section[Livrable spécifique : entente de gouvernance des données simplifiée]{Livrable spécifique :\\ entente de gouvernance des données simplifiée}
+\label{sec:entente}
+% TODO : court paragraphe de présentation (rapport seulement) : rôle de l'entente, lien avec les sections 5 et 6.
+% Le texte de l'entente est dans sections/08-entente-gouvernance.tex (aussi compilé seul par entente-autonome.tex).
+\arediger{présentation de l'entente}
+\input{sections/08-entente-gouvernance}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{sections/09-conclusion} % se termine par \label{fin-corps}
+
+% ---------- Références (hors limite de pages) ----------
 \clearpage
 % TODO : retirer ce \nocite quand les sources d'exemple seront citées
 % dans le texte avec \cite{...} (sinon elles n'apparaissent pas).
 \nocite{eptc2,loi25,pcap,mcmahan2017fedavg}
-\printbibliography[heading=bibintoc,title={Références}]
+\begin{singlespace}
+\renewcommand{\refname}{Références}
+\addcontentsline{toc}{section}{Références}
+\bibliographystyle{IEEEtran}
+\bibliography{../shared/references}
+\end{singlespace}
 
-% --- Annexes (obligatoires, hors limite de pages) ---------------------------------------
+% ---------- Annexes (obligatoires, hors limite de pages) ----------
 \clearpage
 \begin{appendices}
-\input{rapport/annexes/a-contributions.tex}
+
+\section{Contributions individuelles}
+\label{ann:contributions}
+\input{sections/annexe_contributions}
+
 \clearpage
-\input{rapport/annexes/b-integrite-ia.tex}
+\section{Déclaration d'intégrité et d'originalité}
+\label{ann:integrite}
+\input{sections/annexe_integrite_ia}
+
 \end{appendices}
 
 \end{document}

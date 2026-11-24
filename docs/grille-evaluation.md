@@ -52,13 +52,13 @@ Cocher chaque case seulement après une relecture croisée (personne différente
 - [ ] **Vérifié avant remise**
 
 ### Livrable spécifique (10 pts)
-- [ ] L'entente fait 2 à 3 pages (`make entente`).
+- [ ] L'entente fait 2 à 3 pages (compiler `rapport/entente-autonome.tex`).
 - [ ] Les articles sont numérotés : parties, objet, définitions, droits PCAP, retrait et désapprentissage, publications, bénéfices, durée, différends, signatures.
 - [ ] L'entente est claire, applicable et cohérente avec PCAP.
 - [ ] **Vérifié avant remise**
 
 ### Rédaction & normes (6 pts)
-- [ ] Le corps fait 15 à 20 pages hors références et annexes (`make pages`).
+- [ ] Le corps fait 15 à 20 pages hors références et annexes (avertissement « Corps du rapport » à la compilation, ligne `FEDESANTE-PAGES-CORPS` de `rapport/main.log`).
 - [ ] Le rapport compte au moins 15 sources, dont au moins 5 articles évalués par les pairs, en style IEEE ou APA cohérent.
 - [ ] Aucune référence non définie ni `[À rédiger …]` ne subsiste (`grep -rn arediger rapport/`).
 - [ ] Le français est relu (orthographe, typographie, guillemets « »).
