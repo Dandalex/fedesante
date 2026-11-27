@@ -1,23 +1,27 @@
-% !TEX root = ../main.tex
-% ======================================================================
-% Section 1 – Introduction et justification du sujet
-% Responsable : Ninette Mahoro
-% Grille : « Cadrage & problématique » – 6 pts (partagés avec la section 2).
-% Longueur indicative : ~1,5 à 2 pages.
-% ======================================================================
-% TODO : situer le sujet dans la recherche multicentrique en santé ou dans la protection de la vie privée.
-% TODO : expliquer les limites des approches centralisées (regroupement des dossiers patients dans un entrepôt unique).
-% TODO : présenter brièvement \fedesante{} (mise en situation hypothétique) et la promesse « les données ne quittent jamais l'établissement ».
-% TODO : annoncer le plan du rapport (renvois avec \cref{sec:...}).
-
-\subsection{Recherche multicentrique en santé et protection de la vie privée}
+\subsection{Contexte}
 \label{sec:intro-contexte}
-\arediger{contexte}
 
-\subsection{Limites des approches centralisées}
-\label{sec:intro-limites}
-\arediger{limites}
+La recherche clinique contemporaine et l’épidémiologie prédictive s’appuient de plus en plus sur des modèles d’apprentissage automatique (\emph{machine learning}) capables de dépister précocement des pathologies chroniques et d’anticiper leurs complications sévères~[1]. Dans le cas du diabète --- une maladie métabolique complexe dont l’évolution clinique dépend de déterminants génétiques, biologiques, environnementaux et socioéconomiques ---, la performance prédictive et la capacité de généralisation d’un algorithme sont directement tributaires du volume et de la diversité des données d’entraînement~[2].
 
-\subsection{Mise en situation et plan du rapport}
-\label{sec:intro-plan}
-\arediger{mise en situation et plan}
+Or, un établissement de santé isolé dispose rarement d’une cohorte suffisamment vaste et représentative de l’ensemble de la population pour entraîner à lui seul un modèle robuste et exempt de biais de sélection. La collaboration multicentrique s’impose dès lors comme une exigence méthodologique incontournable afin de mutualiser les connaissances issues de milieux cliniques complémentaires, allant des grands centres hospitaliers universitaires aux cliniques régionales et aux services de santé communautaires.
+
+\subsection{Protection de la vie privée et limites de la centralisation}
+
+En recherche biomédicale, cet impératif de mutualisation scientifique se heurte toutefois aux exigences éthiques, juridiques et déontologiques liées à la protection des renseignements personnels de santé. Les dossiers médicaux électroniques renferment des renseignements hautement sensibles dont toute divulgation non autorisée expose les patients à des préjudices graves, tels que la discrimination, l’atteinte à la réputation ou la rupture du lien de confiance envers le système de soins.
+
+Traditionnellement, les projets d’intelligence artificielle multicentriques reposent sur une architecture centralisée : chaque établissement extrait ses bases de données brutes et les transfère vers un serveur unique ou un entrepôt infonuagique tiers afin de constituer un jeu de données global. D’un point de vue technique, cette approche concentre les risques de cybersécurité en créant un référentiel unique de milliers de dossiers patients qui devient une cible privilégiée pour les cyberattaques et multiplie les surfaces d’exposition lors des transferts réseau~[3]. Sur le plan réglementaire, les exigences strictes de l’EPTC~2~[4], de la Loi~25 du Québec~[5] et de son Règlement sur l’anonymisation des renseignements personnels~[6] --- imposant notamment des évaluations des facteurs relatifs à la vie privée (ÉFVP), des ententes de partage et une anonymisation préalable --- entraînent des lourdeurs administratives considérables qui freinent l’innovation clinique. Enfin, l’extraction physique des données hors de leur milieu d’origine prive les établissements locaux, et tout particulièrement les communautés autochtones, de leur souveraineté et de leur contrôle effectif sur l’usage, la conservation et les retombées de leurs propres renseignements de santé~[7].
+
+\subsection{L’apprentissage fédéré comme réponse technique et le cas « FédéSanté »}
+
+Pour résoudre cette tension entre l’utilité scientifique des données et la protection de la vie privée, l’apprentissage fédéré s’est imposé comme une alternative architecturale majeure~[8]. Plutôt que de déplacer les données vers un serveur central, ce paradigme déplace l’algorithme vers les données : chaque établissement conserve l’intégralité de ses dossiers patients sur sa propre infrastructure locale sécurisée, entraîne une copie du modèle sur place et ne transmet à un serveur d’agrégation que les mises à jour mathématiques des paramètres.
+
+C’est dans cette perspective qu’a été développée \emph{FédéSanté}, une plateforme hypothétique d’apprentissage fédéré conçue pour entraîner un modèle de prédiction des complications du diabète au sein d’un consortium réunissant 12 établissements partenaires : des hôpitaux universitaires, des cliniques régionales ainsi que 3 centres de santé des Premières Nations. Afin de renforcer la protection des échanges entre les sites et l’agrégateur central, \emph{FédéSanté} intègre des mécanismes de confidentialité différentielle (\emph{Differential Privacy})~[9], qui injectent un bruit statistique calibré dans les mises à jour avant leur transmission. Sur le plan institutionnel et promotionnel, le consortium s’appuie sur un argument de vente présenté comme une garantie absolue : « les données ne quittent jamais l’établissement ».
+
+\subsection{Justification critique et structure du rapport}
+
+Si cette promesse séduit par sa simplicité et semble lever d’emblée les obstacles éthiques et réglementaires liés au partage de dossiers médicaux, une analyse rigoureuse en méthodologie de la recherche démontre qu’elle repose sur une vision réductrice de la sécurité de l’information et de la gouvernance des données. D’une part, même en l’absence de transfert de fichiers bruts, les paramètres d’un modèle mémorisent une empreinte statistique des cohortes locales, exposant le consortium à des attaques par inférence d’appartenance ou par inversion de modèle~[3]. D’autre part, la décentralisation technique du calcul ne règle ni les asymétries de représentativité entre grands hôpitaux et petits centres régionaux, ni les questions de propriété intellectuelle sur le modèle coentraîné, ni le respect des droits collectifs de souveraineté des Premières Nations encadrés par les principes PCAP\textregistered{} (Propriété, Contrôle, Accès, Possession)~[7] et le chapitre~9 de l’EPTC~2~[4].
+
+Le présent rapport a pour mandat d’évaluer de manière critique la validité de cette promesse et d’analyser les enjeux éthiques, juridiques et opérationnels qui subsistent au sein du consortium \emph{FédéSanté}. À cette fin, l’étude confronte l’architecture technique du projet aux impératifs d’éthique, d’équité, de propriété intellectuelle, de souveraineté des données et de valorisation scientifique, afin de proposer un cadre de gouvernance responsable adapté aux communautés participantes.
+
+
+
