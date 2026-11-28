@@ -38,7 +38,6 @@ C'est déjà le cas pour les données brutes, qui restent dans la communauté, m
 Les auteurs proposent donc une clause propre aux communautés des Premières Nations : une communauté qui se retire conserve ses droits sur le modèle tant que sa contribution n'en a pas été retirée.
 \arediger{Choisir une méthode}
 Ce retrait passe par le désapprentissage ou par un réentraînement sans ses données (\cref{sec:retrait-desapprentissage}).
-Un simple délai ne suffirait pas, car un modèle n'\enquote{oublie} pas ses données en poursuivant son entraînement.
 
 \paragraph{Contrôle}
 Avant de collaborer, chaque communauté reçoit la documentation complète du traitement : prétraitement, entraînement local et agrégation.
@@ -62,8 +61,19 @@ Il serait en effet inéquitable qu'elle profite d'améliorations auxquelles elle
 
 \subsubsection{Retrait d'un site et désapprentissage}
 \label{sec:retrait-desapprentissage}
-% TODO : un site peut-il se retirer et exiger le « désapprentissage » (machine unlearning) de sa contribution ? Faisabilité technique et engagements contractuels.
-\arediger{retrait et désapprentissage}
+À l'exception des communautés des Premières Nations, un site qui se retire ne peut pas exiger que sa contribution soit désapprise.
+Dès son retrait, l'entraînement sur ses nouvelles données cesse.
+Le modèle ne contient pas les données brutes du site : il est construit à partir de celles-ci.
+Retrouver ces données à partir du modèle est difficile, mais pas impossible (\cref{sec:revue-attaques-dp}) ; la \ac{DP} réduit ce risque sans l'éliminer.
+Le retrait du consentement d'un patient, distinct du retrait d'un site, est traité à la \cref{sec:consentement}.
+
+Les communautés des Premières Nations peuvent, elles, demander le retrait de leur contribution, conformément au principe de propriété (\cref{sec:pcap-parametres}).
+Pour rendre ce retrait possible, une image du modèle global est conservée chaque année.
+Lorsqu'une communauté se retire, le modèle est ramené à la dernière image antérieure à son arrivée, puis réentraîné avec les seuls sites restants.
+Si cette image date de plus de 10~ans, le modèle est ramené à l'image d'il y a 10~ans.
+Les auteurs proposent qu'au-delà de ce délai, les contributions plus anciennes de la communauté aient été suffisamment diluées par les cycles d'entraînement subséquents pour ne plus constituer une part significative du modèle : le désapprentissage est alors partiel, mais jugé suffisant.
+Dans les deux cas, la contribution de la communauté ne compte plus de façon significative dans le modèle.
+Cette procédure, y compris la limite de 10~ans, est soumise à l'accord de la communauté, qui garde ainsi le contrôle de son retrait.
 
 \subsubsection{Protocole d'agrégation : brevet ou code ouvert ?}
 \label{sec:brevet-code-ouvert}
