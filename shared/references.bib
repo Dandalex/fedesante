@@ -1,73 +1,136 @@
-% ======================================================================
-% Bibliographie partagée (BibTeX, style IEEEtran), utilisée par le rapport
-% (\bibliography{../shared/references}) et par la présentation.
-%
-% Règles de l'équipe :
-%  - Exigence : au moins 15 sources, dont au moins 5 articles scientifiques
-%    évalués par les pairs.
-%  - Toute nouvelle entrée est aussi ajoutée dans docs/sources-a-verifier.md.
-%  - Ne jamais inventer une référence, une page, un DOI ou un numéro
-%    d'article de loi : copier depuis la source officielle.
-%  - Pour les lois et politiques, indiquer la date de consultation dans
-%    note (IEEEtran n'affiche pas le champ urldate).
-%
-% Les quatre entrées ci-dessous sont des EXEMPLES DE FORMAT. Les champs
-% marqués « À VÉRIFIER » doivent être confirmés à la source officielle.
-% ======================================================================
-
-% --- Politique : EPTC 2 ------------------------------------------------
-% À VÉRIFIER : version en vigueur à la date de remise (l'édition 2022 est
-% la dernière connue au moment de la création du dépôt), URL officielle
-% (site du Groupe consultatif interagences en éthique de la recherche),
-% date de consultation. Le chapitre 9 porte sur la recherche impliquant
-% les Premières Nations, les Inuit et les Métis du Canada.
-@manual{eptc2,
-  author       = {{Conseil de recherches en sciences humaines du Canada} and
-                  {Conseil de recherches en sciences naturelles et en génie du Canada} and
-                  {Instituts de recherche en santé du Canada}},
-  title        = {Énoncé de politique des trois conseils : Éthique de la recherche avec des êtres humains -- {EPTC}~2},
-  year         = {2022},
-  organization = {Gouvernement du Canada},
-  note         = {À VÉRIFIER : version en vigueur, URL et date de consultation},
+@article{dworkAlgorithmicFoundationsDifferential2014,
+  title = {The {{Algorithmic Foundations}} of {{Differential Privacy}}},
+  author = {Dwork, Cynthia and Roth, Aaron},
+  year = 2014,
+  month = aug,
+  journal = {Foundations and Trends\textregistered{} in Theoretical Computer Science},
+  volume = {9},
+  number = {3-4},
+  pages = {211--487},
+  issn = {1551-305X, 1551-3068},
+  doi = {10.1561/0400000042},
+  url = {https://www.emerald.com/fttcs/article/9/3-4/211/1332491/The-Algorithmic-Foundations-of-Differential},
+  urldate = {2026-11-27},
+  abstract = {The problem of privacy-preserving data analysis has a long history spanning multiple disciplines. As electronic data about individuals becomes increasingly detailed, and as technology enables ever more powerful collection and curation of these data, the need increases for a robust, meaningful, and mathematically rigorous definition of privacy, together with a computationally rich class of algorithms that satisfy this definition. Differential Privacy is such a definition.             After motivating and discussing the meaning of differential privacy, the preponderance of this monograph is devoted to fundamental techniques for achieving differential privacy, and application of these techniques in creative combinations, using the query-release problem as an ongoing example. A key point is that, by rethinking the computational goal, one can often obtain far better results than would be achieved by methodically replacing each step of a non-private computation with a differentially private implementation. Despite some astonishingly powerful computational results, there are still fundamental limitations --- not just on what can be achieved with differential privacy but on what can be achieved with any method that protects against a complete breakdown in privacy. Virtually all the algorithms discussed herein maintain differential privacy against adversaries of arbitrary computational power. Certain algorithms are computationally intensive, others are efficient. Computational complexity for the adversary and the algorithm are both discussed.             We then turn from fundamentals to applications other than queryrelease, discussing differentially private methods for mechanism design and machine learning. The vast majority of the literature on differentially private algorithms considers a single, static, database that is subject to many analyses. Differential privacy in other models, including distributed databases and computations on data streams is discussed.             Finally, we note that this work is meant as a thorough introduction to the problems and techniques of differential privacy, but is not intended to be an exhaustive survey --- there is by now a vast amount of work in differential privacy, and we can cover only a small portion of it.},
+  langid = {english}
 }
 
-% --- Loi : Loi 25 (Québec) ---------------------------------------------
-% À VÉRIFIER : intitulé exact, URL LégisQuébec, et pour chaque obligation
-% citée dans le rapport, la loi modifiée et le numéro d'article exact.
-% La Loi 25 modifie surtout la Loi sur l'accès aux documents des
-% organismes publics et sur la protection des renseignements personnels
-% et la Loi sur la protection des renseignements personnels dans le
-% secteur privé : citer de préférence ces lois telles que modifiées.
-@misc{loi25,
-  title        = {Loi modernisant des dispositions législatives en matière de protection des renseignements personnels},
-  year         = {2021},
-  note         = {{L.Q.} 2021, c.~25. À VÉRIFIER : URL officielle et date de consultation},
-  langid       = {french},
+@misc{GNUAfferoGeneral,
+  title = {{{GNU Affero General Public License}} - {{GNU Project}} - {{Free Software Foundation}}},
+  url = {https://www.gnu.org/licenses/agpl-3.0.html},
+  urldate = {2026-11-28},
+  file = {C:\Users\dandr\Zotero\storage\27TLJKT5\agpl-3.0.html}
 }
 
-% --- Principes PCAP (CGIPN) ------------------------------------------------
-% À VÉRIFIER : titre exact de la publication retenue, année, URL et date
-% de consultation (site du Centre de gouvernance de l'information des
-% Premières Nations). PCAP est une marque déposée du CGIPN.
-@online{pcap,
-  author       = {{Centre de gouvernance de l'information des Premières Nations}},
-  title        = {Les principes de {PCAP}\textsuperscript{\textregistered} des {Premières Nations}},
-  url          = {https://fnigc.ca/fr/},
-  note         = {À VÉRIFIER : titre, année et page exacte},
+@misc{gouvernementducanadaEPTC2022Chapitre2023,
+  title = {{EPTC (2022) -- Chapitre 9 : Recherche impliquant les Premi\`eres Nations, les Inuits ou les M\'etis du Canada - SCRR}},
+  shorttitle = {{EPTC (2022) -- Chapitre 9}},
+  author = {sur la conduite responsable de la recherche {Gouvernement du Canada}, Secr{\'e}tariat},
+  year = 2023,
+  month = jan,
+  url = {https://scrr.canada.ca/politique/eptc/enonce-politique-trois-conseils-ethique-recherche-etres-humains-eptc-chapitre-9-recherche-imp.html},
+  urldate = {2026-11-28},
+  langid = {fra},
+  file = {C:\Users\dandr\Zotero\storage\JKFEJCU5\enonce-politique-trois-conseils-ethique-recherche-etres-humains-eptc-chapitre-9-recherche-imp.html}
 }
 
-% --- Article évalué par les pairs : FedAvg ----------------------------------
-% Article fondateur de l'algorithme FedAvg (AISTATS 2017).
-% À VÉRIFIER : pages et URL dans les actes PMLR avant la remise.
-@inproceedings{mcmahan2017fedavg,
-  author       = {McMahan, H. Brendan and Moore, Eider and Ramage, Daniel and
-                  Hampson, Seth and Agüera y Arcas, Blaise},
-  title        = {Communication-Efficient Learning of Deep Networks from Decentralized Data},
-  booktitle    = {Proceedings of the 20th International Conference on Artificial Intelligence and Statistics (AISTATS)},
-  series       = {Proceedings of Machine Learning Research},
-  volume       = {54},
-  pages        = {1273--1282},
-  year         = {2017},
-  url          = {https://proceedings.mlr.press/v54/mcmahan17a.html},
-  langid       = {english},
+@article{kairouzAdvancesOpenProblems2021,
+  title = {Advances and {{Open Problems}} in {{Federated Learning}}},
+  author = {Kairouz, Peter and McMahan, H. Brendan},
+  year = 2021,
+  month = jun,
+  journal = {Foundations and Trends\textregistered{} in Machine Learning},
+  volume = {14},
+  number = {1-2},
+  pages = {1--210},
+  issn = {1935-8237, 1935-8245},
+  doi = {10.1561/2200000083},
+  url = {https://www.emerald.com/ftmal/article/14/1-2/1/1332154/Advances-and-Open-Problems-in-Federated-Learning},
+  urldate = {2026-11-27},
+  abstract = {Federated learning (FL) is a machine learning setting where many clients (e.g., mobile devices or whole organizations) collaboratively train a model under the orchestration of a central server (e.g., service provider), while keeping the training data decentralized. FL embodies the principles of focused data collection and minimization, and can mitigate many of the systemic privacy risks and costs resulting from traditional, centralized machine learning and data science approaches. Motivated by the explosive growth in FL research, this monograph discusses recent advances and presents an extensive collection of open problems and challenges.},
+  langid = {english}
+}
+
+@misc{mcmahanCommunicationEfficientLearningDeep2023,
+  title = {Communication-{{Efficient Learning}} of {{Deep Networks}} from {{Decentralized Data}}},
+  author = {McMahan, H. Brendan and Moore, Eider and Ramage, Daniel and Hampson, Seth and y Arcas, Blaise Ag{\"u}era},
+  year = 2023,
+  month = jan,
+  number = {arXiv:1602.05629},
+  eprint = {1602.05629},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1602.05629},
+  url = {http://arxiv.org/abs/1602.05629},
+  urldate = {2026-11-27},
+  abstract = {Modern mobile devices have access to a wealth of data suitable for learning models, which in turn can greatly improve the user experience on the device. For example, language models can improve speech recognition and text entry, and image models can automatically select good photos. However, this rich data is often privacy sensitive, large in quantity, or both, which may preclude logging to the data center and training there using conventional approaches. We advocate an alternative that leaves the training data distributed on the mobile devices, and learns a shared model by aggregating locally-computed updates. We term this decentralized approach Federated Learning. We present a practical method for the federated learning of deep networks based on iterative model averaging, and conduct an extensive empirical evaluation, considering five different model architectures and four datasets. These experiments demonstrate the approach is robust to the unbalanced and non-IID data distributions that are a defining characteristic of this setting. Communication costs are the principal constraint, and we show a reduction in required communication rounds by 10-100x as compared to synchronized stochastic gradient descent.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning},
+  file = {C:\Users\dandr\Zotero\storage\PWDYVM2C\McMahan et al. - 2023 - Communication-Efficient Learning of Deep Networks from Decentralized Data.pdf}
+}
+
+@article{riekeFutureDigitalHealth2020,
+  title = {The Future of Digital Health with Federated Learning},
+  author = {Rieke, Nicola and Hancox, Jonny and Li, Wenqi and Milletar{\`i}, Fausto and Roth, Holger R. and Albarqouni, Shadi and Bakas, Spyridon and Galtier, Mathieu N. and Landman, Bennett A. and {Maier-Hein}, Klaus and Ourselin, S{\'e}bastien and Sheller, Micah and Summers, Ronald M. and Trask, Andrew and Xu, Daguang and Baust, Maximilian and Cardoso, M. Jorge},
+  year = 2020,
+  month = sep,
+  journal = {npj Digital Medicine},
+  volume = {3},
+  number = {1},
+  pages = {119},
+  issn = {2398-6352},
+  doi = {10.1038/s41746-020-00323-1},
+  url = {https://www.nature.com/articles/s41746-020-00323-1},
+  urldate = {2026-11-27},
+  abstract = {Abstract             Data-driven machine learning (ML) has emerged as a promising approach for building accurate and robust statistical models from medical data, which is collected in huge volumes by modern healthcare systems. Existing medical data is not fully exploited by ML primarily because it sits in data silos and privacy concerns restrict access to this data. However, without access to sufficient data, ML will be prevented from reaching its full potential and, ultimately, from making the transition from research to clinical practice. This paper considers key factors contributing to this issue, explores how federated learning (FL) may provide a solution for the future of digital health and highlights the challenges and considerations that need to be addressed.},
+  langid = {english}
+}
+
+@article{topolHighperformanceMedicineConvergence2019,
+  title = {High-Performance Medicine: The Convergence of Human and Artificial Intelligence},
+  shorttitle = {High-Performance Medicine},
+  author = {Topol, Eric J.},
+  year = 2019,
+  month = jan,
+  journal = {Nature Medicine},
+  volume = {25},
+  number = {1},
+  pages = {44--56},
+  issn = {1078-8956, 1546-170X},
+  doi = {10.1038/s41591-018-0300-7},
+  url = {https://www.nature.com/articles/s41591-018-0300-7},
+  urldate = {2026-11-27},
+  langid = {english}
+}
+
+@techreport{zotero-item-1479,
+  title = {Les Principes de {{PCAP}}\textregistered{} Des {{Premi\`eres Nations}}},
+  author = {{Centre de gouvernance de l'information des Premi{\`e}res Nations (CGIPN)}},
+  year = 2023,
+  address = {Akwesasne, ON},
+  institution = {First Nations Information Governance Centre}
+}
+
+@misc{zotero-item-1480,
+  title = {R\`eglement Sur l'anonymisation Des Renseignements Personnels},
+  author = {{Gouvernement du Qu{\'e}bec}},
+  year = 2024,
+  month = may,
+  number = {D\'ecret 829-2024, RLRQ, c. P-39.1, r. 0.01}
+}
+
+@misc{zotero-item-1481,
+  title = {Loi Modernisant Des Dispositions L\'egislatives En Mati\`ere de Protection Des Renseignements Personnels ({{Loi}} 25)},
+  author = {{Gouvernement du Qu{\'e}bec}},
+  year = 2021,
+  month = sep,
+  number = {L.Q. 2021, c. 25}
+}
+
+@techreport{zotero-item-1482,
+  title = {\'Enonc\'e de Politique Des Trois Conseils : {{\'Ethique}} de La Recherche Avec Des \^Etres Humains ({{EPTC}} 2)},
+  author = {{Instituts de recherche en sant{\'e} du Canada} and {Conseil de recherches en sciences naturelles et en g{\'e}nie du Canada} and {Conseil de recherches en sciences humaines}},
+  year = 2022,
+  address = {Ottawa, ON},
+  institution = {Gouvernement du Canada}
 }

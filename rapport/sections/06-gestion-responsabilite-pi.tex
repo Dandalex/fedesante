@@ -31,9 +31,9 @@ Ces principes ont été pensés pour des données ; or, avec l'apprentissage fé
 La question devient donc : les paramètres du modèle sont-ils des données qui concernent la communauté ?
 Les auteurs répondent par l'affirmative : les poids encodent de l'information apprise sur ces données, et les attaques présentées à la \cref{sec:revue-attaques-dp} montrent qu'une partie peut en être extraite.
 Les paragraphes suivants appliquent donc chaque principe aux paramètres autant qu'aux données.
-\arediger{ajout sources selon celle prise par Ninette}
+
 \paragraph{Propriété}
-Selon ce principe, une communauté détient collectivement ses savoirs et les données qui la concernent.
+Selon ce principe, une communauté détient collectivement ses savoirs et les données qui la concernent\cite{zotero-item-1479}.
 C'est déjà le cas pour les données brutes, qui restent dans la communauté, mais pas pour le modèle entraîné à partir de celles-ci.
 Les auteurs proposent donc une clause propre aux communautés des Premières Nations : une communauté qui se retire conserve ses droits sur le modèle tant que sa contribution n'en a pas été retirée.
 \arediger{Choisir une méthode}
@@ -46,7 +46,7 @@ Tous les protocoles de gestion de l'information restent à sa disposition pendan
 Tout changement à ces protocoles, ou tout nouvel usage du modèle (\cref{sec:usages-secondaires}), requiert son accord : la communauté dispose d'un droit de veto, et non d'une simple voix au consortium.
 
 \paragraph{Accès}
-En tant que collaboratrice, chaque communauté a accès au modèle entraîné avec ses données, ainsi qu'à ses performances mesurées sur sa propre population (\cref{sec:edi-sous-groupes}).
+En tant que collaboratrice, chaque communauté a accès au modèle entraîné avec ses données, ainsi qu'à ses performances mesurées sur sa propre population (\cref{sec:edi-sous-groupes})\cite{zotero-item-1479}.
 Elle a aussi un droit de regard sur l'accès des autres : toute demande d'un chercheur externe visant le modèle doit être approuvée par elle (\cref{sec:acces-externe}).
 Ses données restent accessibles en tout temps selon ses propres protocoles.
 
@@ -75,10 +75,16 @@ Les auteurs proposent qu'au-delà de ce délai, les contributions plus anciennes
 Dans les deux cas, la contribution de la communauté ne compte plus de façon significative dans le modèle.
 Cette procédure, y compris la limite de 10~ans, est soumise à l'accord de la communauté, qui garde ainsi le contrôle de son retrait.
 
-\subsubsection{Protocole d'agrégation : brevet ou code ouvert ?}
-\label{sec:brevet-code-ouvert}
-% TODO : le protocole d'agrégation doit-il être breveté ou publié en code ouvert ?
-\arediger{brevet ou code ouvert}
+\subsubsection{Protocole d'agrégation : code ouvert}
+\label{sec:code-ouvert}
+Le protocole d'agrégation repose sur des méthodes déjà publiées, comme FedAvg~\cite{mcmahanCommunicationEfficientLearningDeep2023}, et n'apporte aucune innovation technique.
+Faute de nouveauté, il serait donc très difficile, voire impossible, de le breveter.
+Un brevet entrerait d'ailleurs en conflit avec les principes \pcap{} (\cref{sec:pcap-parametres}) : il conférerait à son titulaire des droits exclusifs sur un outil entraîné avec les données des communautés.
+Le code est donc publié en code ouvert, sous licence AGPL-3.0 \cite{GNUAfferoGeneral}.
+Puisque \fedesante{} traite des données de santé confidentielles, un code ouvert renforce aussi la confiance des patients, des communautés et des comités d'éthique, qui peuvent vérifier ce que fait réellement le protocole.
+Cette licence, de type copyleft, oblige toute version modifiée, même déployée uniquement sur un serveur, à rester ouverte : nul ne peut s'approprier le protocole dans un produit fermé\cite{GNUAfferoGeneral}.
+Seul le code est ouvert : les paramètres du modèle entraîné restent soumis aux règles d'accès de la \cref{sec:pcap-parametres}.
+
 
 \subsection{Documentation}
 \label{sec:documentation}
