@@ -8,12 +8,12 @@
 % que l'espace suivante soit avalée).
 \newcommand{\fedesante}{FédéSanté}
 % PCAP est une marque déposée du Centre de gouvernance de l'information des
-% Premières Nations (CGIPN) ; le symbole ® est demandé par le CGIPN.
-% TODO : vérifier la forme d'usage recommandée par le CGIPN.
-\newcommand{\pcap}{PCAP\textsuperscript{\textregistered}}
+% Premières Nations (CGIPN) ; le symbole ® est demandé par le CGIPN (vérifié).
+% \pcap{} et \eptc{} passent par acro : chaque emploi compte comme « utilisé ».
+\newcommand{\pcap}{\acs{PCAP}}
 % TODO : vérifier la version de l'EPTC 2 en vigueur à la date de remise
 % et ajuster l'entrée correspondante dans shared/references.bib.
-\newcommand{\eptc}{EPTC~2}
+\newcommand{\eptc}{\acs{EPTC}}
 \newcommand{\loivingtcinq}{Loi~25}
 
 % --- Espace réservé visible ----------------------------------------------
@@ -21,12 +21,28 @@
 % subsister dans la version remise (vérifier avec : grep -rn arediger).
 \newcommand{\arediger}[1]{{\color{gray}\itshape[À rédiger : #1]}}
 
-% --- Sigles et acronymes (paquet acronym) ----------------------------------
+% --- Sigles et acronymes (paquet acro) -------------------------------------
 % \ac{FL} : forme longue + sigle au premier emploi, sigle ensuite.
 % \acs{FL} : sigle seul ; \acl{FL} : forme longue seule.
-\usepackage{acronym}
-\acrodef{FL}[FL]{apprentissage fédéré (\emph{federated learning})}
-\acrodef{DP}[DP]{confidentialité différentielle (\emph{differential privacy})}
-\acrodef{FedAvg}[FedAvg]{moyenne fédérée (\emph{Federated Averaging})}
-\acrodef{CER}[CER]{comité d'éthique de la recherche}
-\acrodef{PCAP}[PCAP]{propriété, contrôle, accès et possession}
+% Les sigles sont déclarés dans shared/sigles.tex (ajouter les nouveaux là).
+% \listesigles compose la liste triée (rapport, après la table des matières).
+\usepackage{acro}
+\acsetup{
+  format/foreign  = \itshape,
+  list/display    = used,       % tous les sigles déclarés, même non employés
+  list/template   = tabular,
+  list/heading    = section*,
+  list/name       = Liste des sigles et acronymes,
+}
+% ® en exposant, sans accolades : LaTeX Workshop ne lit pas les formes
+% courtes qui contiennent des accolades.
+\newcommand{\marquedeposee}{\textsuperscript{\textregistered}}
+% Alias pour l'autocomplétion de LaTeX Workshop (voir shared/sigles.tex).
+% Incompatible avec le paquet glossaries : ne pas le charger dans ce projet.
+\NewDocumentCommand{\newacronym}{O{} m m m}{\DeclareAcronym{#2}{short = {#3}, long = {#4}, #1}}
+\input{../shared/sigles}
+\newcommand{\listesigles}{%
+  \phantomsection
+  \addcontentsline{toc}{section}{Liste des sigles et acronymes}%
+  \printacronyms
+}

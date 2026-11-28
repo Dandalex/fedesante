@@ -1,0 +1,24 @@
+% ======================================================================
+% Sigles et acronymes : source unique pour le rapport, l'entente et la présentation.
+% Syntaxe (sans le % initial) : \newacronym[options acro] {clé} {forme courte} {forme longue}
+%   (espaces ajoutés ici pour que LaTeX Workshop ignore cette ligne d'exemple)
+%   options : foreign = terme anglais d'origine (en italique, entre parenthèses)
+%             sort    = clé de tri, utile si la forme courte est accentuée
+% \newacronym est un alias de \DeclareAcronym (paquet acro), défini dans
+% shared/macros.tex : ce n'est PAS la commande du paquet glossaries.
+% Pourquoi : LaTeX Workshop ne lit que la syntaxe \newacronym pour proposer
+% les clés en autocomplétion après \ac{, \acs{, \acl{.
+% La liste (\listesigles) est triée automatiquement : l'ordre ici est libre.
+% ======================================================================
+\newacronym{CER}{CER}{comité d'éthique de la recherche}
+\newacronym{CGIPN}{CGIPN}{Centre de gouvernance de l'information des Premières Nations}
+\newacronym[foreign = differential privacy]{DP}{DP}{confidentialité différentielle}
+\newacronym[sort = EDI]{EDI}{ÉDI}{équité, diversité et inclusion}
+\newacronym{EPTC}{EPTC~2}{Énoncé de politique des trois Conseils : Éthique de la recherche avec des êtres humains}
+\newacronym[foreign = Federated Averaging]{FedAvg}{FedAvg}{moyenne fédérée}
+\newacronym[foreign = federated learning]{FL}{FL}{apprentissage fédéré}
+\newacronym{IA}{IA}{intelligence artificielle}
+% PCAP® : marque déposée du CGIPN, le symbole ® est demandé (vérifié).
+\newacronym{PCAP}{PCAP\marquedeposee}{propriété, contrôle, accès et possession}
+\newacronym{PI}{PI}{propriété intellectuelle}
+\newacronym{UQO}{UQO}{Université du Québec en Outaouais}
