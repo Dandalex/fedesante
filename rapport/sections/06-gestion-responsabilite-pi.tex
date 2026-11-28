@@ -20,13 +20,45 @@ Or, ces poids ont été ajustés à partir des données des 12 établissements p
 Avec \ac{FedAvg} pondéré, les grands sites pèsent davantage dans l'agrégation, mais chaque contribution reste indispensable au modèle final.
 Les auteurs proposent donc une copropriété du modèle global, gérée par un consortium.
 Chaque établissement y disposera d'une voix, quelle que soit sa taille, afin d'assurer l'équité dans la gestion du modèle.
+Si un établissement cesse de collaborer pour le projet, leur mandant dans le consortium se termine également.
 Cette copropriété ne suffit toutefois pas pour les trois centres de santé des Premières Nations, dont les données relèvent d'une gouvernance propre, abordée à la \cref{sec:pcap-parametres}.
 
 
-\subsubsection{Principes PCAP appliqués aux paramètres du modèle}
+\subsubsection{Principes \texorpdfstring{\pcap{}}{PCAP} appliqués aux paramètres du modèle}
 \label{sec:pcap-parametres}
-% TODO : comment appliquer les principes \pcap{} (propriété, contrôle, accès, possession) à des paramètres de modèle plutôt qu'à des données brutes ? (citer \cite{pcap})
-\arediger{PCAP et paramètres}
+Toute recherche menée avec des communautés des Premières Nations est encadrée par le chapitre~9 de l'\eptc{} et par les principes de \ac{PCAP}.
+Ces principes ont été pensés pour des données ; or, avec l'apprentissage fédéré, les données brutes ne quittent jamais la communauté.
+La question devient donc : les paramètres du modèle sont-ils des données qui concernent la communauté ?
+Les auteurs répondent par l'affirmative : les poids encodent de l'information apprise sur ces données, et les attaques présentées à la \cref{sec:revue-attaques-dp} montrent qu'une partie peut en être extraite.
+Les paragraphes suivants appliquent donc chaque principe aux paramètres autant qu'aux données.
+\arediger{ajout sources selon celle prise par Ninette}
+\paragraph{Propriété}
+Selon ce principe, une communauté détient collectivement ses savoirs et les données qui la concernent.
+C'est déjà le cas pour les données brutes, qui restent dans la communauté, mais pas pour le modèle entraîné à partir de celles-ci.
+Les auteurs proposent donc une clause propre aux communautés des Premières Nations : une communauté qui se retire conserve ses droits sur le modèle tant que sa contribution n'en a pas été retirée.
+\arediger{Choisir une méthode}
+Ce retrait passe par le désapprentissage ou par un réentraînement sans ses données (\cref{sec:retrait-desapprentissage}).
+Un simple délai ne suffirait pas, car un modèle n'\enquote{oublie} pas ses données en poursuivant son entraînement.
+
+\paragraph{Contrôle}
+Avant de collaborer, chaque communauté reçoit la documentation complète du traitement : prétraitement, entraînement local et agrégation.
+Elle décide ainsi, en connaissance de cause, si ses données peuvent servir à ces fins.
+Tous les protocoles de gestion de l'information restent à sa disposition pendant toute la durée du projet.
+Tout changement à ces protocoles, ou tout nouvel usage du modèle (\cref{sec:usages-secondaires}), requiert son accord : la communauté dispose d'un droit de veto, et non d'une simple voix au consortium.
+
+\paragraph{Accès}
+En tant que collaboratrice, chaque communauté a accès au modèle entraîné avec ses données, ainsi qu'à ses performances mesurées sur sa propre population (\cref{sec:edi-sous-groupes}).
+Elle a aussi un droit de regard sur l'accès des autres : toute demande d'un chercheur externe visant le modèle doit être approuvée par elle (\cref{sec:acces-externe}).
+Ses données restent accessibles en tout temps selon ses propres protocoles.
+
+\paragraph{Possession}
+C'est le principe que l'apprentissage fédéré respecte le plus directement : les données brutes ne quittent jamais la communauté, qui en garde la possession physique en tout temps.
+Chaque communauté détient aussi une copie du modèle global.
+Si elle cesse de collaborer, elle conserve la dernière version à laquelle elle a contribué, mais ne reçoit plus les mises à jour.
+Il serait en effet inéquitable qu'elle profite d'améliorations auxquelles elle ne contribue plus.
+
+
+
 
 \subsubsection{Retrait d'un site et désapprentissage}
 \label{sec:retrait-desapprentissage}
